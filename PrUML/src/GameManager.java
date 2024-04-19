@@ -11,6 +11,7 @@ public class GameManager {
 
         while (!valido){
             try {
+                System.out.println(" ");
                 numero = scanner.nextInt();
                 valido = true;
             }catch (InputMismatchException e){

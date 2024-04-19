@@ -24,12 +24,6 @@ public class Cofre{
     }
 
     public void abrirCofre(Personaje pj){
-        System.out.println(STR."""
-
-
-Encuentras un cofre en medio de la sala, al abrirlo obtienes:
-\{recompensa(pj)}
-
-""");
+        System.out.println("\n\nEncuentras un cofre en medio de la sala, al abrirlo obtienes:\n" + recompensa(pj) + "\n");
     }
 }

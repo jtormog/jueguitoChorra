@@ -1,7 +1,6 @@
 
 
 public class Main {
-
     static char[][] tablero = new char[3][3];
     static char[][] tableroVisible = new char[3][3];
     static Personaje pj = new Personaje();
@@ -67,20 +66,18 @@ public class Main {
     static void mostrarTablero(){
         for (int i = 0; i< tablero.length; i++){
             for (int j = 0; j < tablero.length; j++){
-                if (Personaje.posicionVertical == i && Personaje.posicionHorizontal == j){
+                if (Personaje.posicionVertical == i && Personaje.posicionHorizontal == j) {
                     System.out.print("\033[1;33m[\tX\t]\033[0m\t");
                     tableroVisible[i][j] = tablero[i][j];
-                }
-                else if ( j == Personaje.posicionHorizontal+1 && i == Personaje.posicionVertical){
-                    System.out.print(STR."[\t\{tablero[i][j]}\t]\t");
+                } else if (j == Personaje.posicionHorizontal + 1 && i == Personaje.posicionVertical) {
+                    System.out.print("[\t" + tablero[i][j] + "\t]\t");
                     tableroVisible[i][j] = tablero[i][j];
-                }
-                else if ( j == Personaje.posicionHorizontal && i == Personaje.posicionVertical+1){
-                    System.out.print(STR."[\t\{tablero[i][j]}\t]\t");
+                } else if (j == Personaje.posicionHorizontal && i == Personaje.posicionVertical + 1) {
+                    System.out.print("[\t" + tablero[i][j] + "\t]\t");
                     tableroVisible[i][j] = tablero[i][j];
-
+                } else {
+                    System.out.print("[\t" + tableroVisible[i][j] + "\t]\t");
                 }
-                else System.out.print(STR."[\t\{tableroVisible[i][j]}\t]\t");
             }
             System.out.println("\n\n");
         }
@@ -92,10 +89,10 @@ public class Main {
         int i = 1;
 
         if (Personaje.posicionHorizontal <2){
-            System.out.println(STR."\{i}. Derecha");
+            System.out.println(i+". Derecha");
             ++i;
         }
-        if (Personaje.posicionVertical <2) System.out.println(STR."\{i}. Abajo");
+        if (Personaje.posicionVertical <2) System.out.println(i+". Abajo");
 
         int opcion = GameManager.castingNumero();
 
@@ -103,9 +100,15 @@ public class Main {
         if (Personaje.posicionVertical >=2 && opcion == 2) opcion++;
 
         switch (opcion){
-            case DERECHA -> pj.desplazarseDerecha();
-            case ABAJO -> pj.desplazarseAbajo();
-            default -> System.out.println("Número invalido");
+            case DERECHA:
+                pj.desplazarseDerecha();
+                break;
+            case ABAJO:
+                pj.desplazarseAbajo();
+                break;
+            default:
+                System.out.println("Número invalido");
+                break;
         }
 
     }
@@ -113,9 +116,15 @@ public class Main {
         char casillaActual = tablero[Personaje.posicionVertical][Personaje.posicionHorizontal];
 
         switch (casillaActual){
-            case COFRE -> cofre.abrirCofre(pj);
-            case TIENDA -> Tienda.entrarTienda(pj);
-            case ENEMIGO -> pj.combate();
+            case COFRE:
+                cofre.abrirCofre(pj);
+                break;
+            case TIENDA:
+                Tienda.entrarTienda(pj);
+                break;
+            case ENEMIGO:
+                pj.combate();
+                break;
         }
     }
 

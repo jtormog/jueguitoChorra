@@ -5,7 +5,7 @@ public class Tienda {
     static final int SALIR = 9;
 
     public static void entrarTienda(Personaje pj){
-        System.out.println("Entras en una tienda");
+        System.out.println("\nEntras en una tienda");
         boolean comprando = Personaje.oro >2;
 
         if(!comprando) {
@@ -14,10 +14,8 @@ public class Tienda {
         }
 
         while (comprando){
-            System.out.println(STR."""
-
-Tienes \{Personaje.oro} monedas de oro
-""");
+            System.out.println("Tienes "+Personaje.oro +" monedas de oro");
+            
             System.out.println("Puedes comprar:\n1. 2 Vida -- 3 monedas de oro");
             if (Personaje.oro >4) System.out.println("2. 1 Armadura -- 7 monedas de oro");
             if (Personaje.oro >9) System.out.println("3. 1 Poción -- 10 monedas de oro");

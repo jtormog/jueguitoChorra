@@ -12,9 +12,15 @@ public class Enemigo extends Criatura{
         ataque = GameManager.random(3)* nivel;
 
         switch (tipoDeEnemigo){
-            case ESQUELETO -> nombreEnemigo = "esqueleto";
-            case VAMPIRO -> nombreEnemigo = "vampiro";
-            case MOCO -> nombreEnemigo = "moco";
+            case ESQUELETO:
+             nombreEnemigo = "esqueleto";
+             break;
+            case VAMPIRO:
+             nombreEnemigo = "vampiro";
+                break;
+            case MOCO:
+             nombreEnemigo = "moco";
+             break;
         }
     }
 }
