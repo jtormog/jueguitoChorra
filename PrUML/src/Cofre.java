@@ -10,9 +10,13 @@ public class Cofre{
                 recompensa = "7 monedas de oro";
                 break;
             case 2:
-                pj.vida +=2;
+                recompensa = "2 monedas de oro";
+                if (pj.vida <=18){
+                    pj.vida +=2;
+                    recompensa += " y 2 de vida";
+                }
                 Personaje.oro+=2;
-                recompensa = "2 monedas de oro y 2 de vida";
+
                 break;
             case 3:
                 Personaje.armadura+=1;

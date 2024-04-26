@@ -96,8 +96,7 @@ public class Personaje  extends Criatura {
         } while (enemigoVivo && personajeVivo);
         
         if (!enemigoVivo) {
-            if (enemigo.jefe) Jefe.recompensa();
-            if (!enemigo.jefe){
+            if (!enemigo.esJefe){
                 System.out.println("\nHas matado al pobre " + Enemigo.nombreEnemigo + "...\nAl final tú eras el único monstruo de la habitación\n");
                 enemigo.recompensa();
             }
@@ -120,17 +119,19 @@ public class Personaje  extends Criatura {
             if (random == 1) {
                 System.out.println("Has fallado...\nHa sido bastante lamentable...");
 
-                switch (Enemigo.tipoDeEnemigo) {
-                    case ESQUELETO:
-                        System.out.println("Agradeces que el esqueleto no tenga ojos y nadie haya " +
-                                "visto el ridículo que acabas de hacer\n");
-                        break;
-                    case VAMPIRO:
-                        System.out.println("Te sientes juzgado por el vampiro\n");
-                        break;
-                    case MOCO:
-                        System.out.println("Le das asco al moco\n");
-                        break;
+                if (!enemigo.esJefe){
+                    switch (Enemigo.tipoDeEnemigo) {
+                        case ESQUELETO:
+                            System.out.println("Agradeces que el esqueleto no tenga ojos y nadie haya " +
+                                    "visto el ridículo que acabas de hacer\n");
+                            break;
+                        case VAMPIRO:
+                            System.out.println("Te sientes juzgado por el vampiro\n");
+                            break;
+                        case MOCO:
+                            System.out.println("Le das asco al moco\n");
+                            break;
+                    }
                 }
 
             } else if (random == 6) {
@@ -200,18 +201,20 @@ public class Personaje  extends Criatura {
     }
     public void subirExperiencia(int experiencia){
         Personaje.experiencia += experiencia;
-        if (Personaje.experiencia >= 6){
+        if (Personaje.experiencia >= 6 && nivel == 1){
             this.nivel++;
+            Personaje.experiencia -=6;
             System.out.println("Has subido a nivel 2\n");
         }
-        if (experiencia >= 18) {
+        if (experiencia >= 12 && nivel == 2) {
             this.nivel++;
+            Personaje.experiencia -=12;
             System.out.println("Has subido a nivel 3\n");
         }
-        if (experiencia >= 36) {
-            this.nivel++;
-            System.out.println("Has subido a nivel 4\n");
-            
+        if (experiencia >= 24 && nivel == 3) {
+            int resto = (experiencia - 24);
+            if (vida + resto <= 20) vida += resto;
+            else vida = 20;
         }
     }
 }

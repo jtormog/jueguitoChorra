@@ -115,10 +115,15 @@ public class GameManager {
                 pj.combate(casillaActual);
                 if (pj.vida > 0){
                     Personaje.piso++;
-                Personaje.posicionHorizontal = 0;
-                Personaje.posicionVertical = 0;
-                GameManager.llenarTablero();
-                System.out.println("\nHas matado al jefe de la mazmorra\n¡Felicidades! Has subido al piso " + Personaje.piso + "\n");
+                    Personaje.posicionHorizontal = 0;
+                    Personaje.posicionVertical = 0;
+                    GameManager.llenarTablero();
+
+                    if (Personaje.piso != 4){
+                        System.out.println("Has matado al jefe de la zona\nOtro cadaver más en tu camino hacia abandonar tu" +
+                                " humanidad\n" +
+                                "Pasas al piso " + Personaje.piso + "\n");
+                    }
                 }
                 break;
 

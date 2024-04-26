@@ -4,13 +4,14 @@ public class Enemigo extends Criatura{
     static final int ESQUELETO = 1;
     static final int VAMPIRO = 2;
     static final int MOCO = 3;
-    public final boolean jefe = false;
+    public boolean esJefe;
 
     static final int ORO = 1;
     static final int EXPERIENCIA = 2;
     static final int Armadura = 3;
 
     public Enemigo(){
+        esJefe = false;
         tipoDeEnemigo = GameManager.random(3);
         nivel = Personaje.piso;
         vida = GameManager.random(5) + nivel;
